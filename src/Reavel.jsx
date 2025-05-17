@@ -1,39 +1,42 @@
 import { motion, useInView, useAnimation } from 'framer-motion'
 import { useRef, useEffect } from 'react'
-export default function Reavel({children,className='w-fit',btn='w-fit'}) {
-  const ref = useRef()
-  const inView = useInView(ref , {once:true})
-  const MainControls = useAnimation()
-  const SlideControls = useAnimation()
-  useEffect(()=>{
-    if(inView){
-      MainControls.start('visible')
-      SlideControls.start('visible')
+
+export default function Reavel({ children, className = 'w-fit', btn = 'w-fit', delay = 0 }) {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true })
+  const controls = useAnimation()
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible')
     }
-  },[inView])
+  }, [inView, controls])
 
   return (
-    <motion.div ref={ref} className={`${btn} relative overflow-hidden`}>
-      <motion.div
+    <motion.div
+      ref={ref}
+      className={className + ' ' + btn}
+      initial="hidden"
+      animate={controls}
       variants={{
-        hidden:{opacity:0, y:75},
-        visible:{opacity:1, y:0}
+        hidden: { opacity: 0, y: 40, filter: 'blur(4px)' },
+        visible: {
+          opacity: 1,
+          y: 0,
+          filter: 'blur(0px)',
+          boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.10)',
+          transition: {
+            type: 'spring',
+            stiffness: 120,
+            damping: 18,
+            duration: 0.7,
+            delay: delay,
+            bounce: 0.25
+          }
+        }
       }}
-      initial='hidden'
-      animate={MainControls}
-      transition={{duration:0.5, delay:0.25}}
-      className={className}>{children}</motion.div>
-      <motion.div
-        variants={{
-          hidden:{left:0},
-          visible:{left:'100%'}
-        }}
-        initial='hidden'
-        animate={SlideControls}
-        transition={{duration:0.5, ease:'easeIn'}}
-        className='absolute top-1 bottom-1 left-0 right-0 bg-black z-20'
-      />
-
+    >
+      {children}
     </motion.div>
   )
 }

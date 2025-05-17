@@ -35,14 +35,12 @@ export default function Img({ img, className, ...props }) {
   if (!myImg) return null;
 
   return (
-    <div className={className}>
-      <img
-        draggable="false"
-        className="w-full h-full"
-        src={myImg}
-        alt=""
-        {...props}
-      />
-    </div>
+    <img
+      draggable="false"
+      className={className ? className + " w-full h-full" : "w-full h-full"}
+      src={myImg}
+      alt=""
+      {...props}
+    />
   );
 }

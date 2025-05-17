@@ -16,33 +16,31 @@ export default function HappyCustomers() {
   },[])
 
   return (
-    <div className='mainMargin pb-10 pt-20'>
-      <h1 className='bolded text-3xl xsm:text-5xl'>OUR HAPPY CUSTOMERS</h1>
-      <div className="overflow-hidden mt-10" ref={ref}>
-      <motion.div
-          drag='x'
-          dragConstraints={{left:-Width, right:0}}
-          whileTap={{ cursor: "grabbing" }}
-        className="flex gap-16 cursor-pointer w-fit mt-10">
+    <div className='mainMargin pt-24 pb-0'>
+      <h1 className='bolded text-3xl xsm:text-5xl mb-16 text-center'>OUR HAPPY CUSTOMERS</h1>
+      <div className="overflow-visible" ref={ref}>
+        <motion.div
+          drag={false}
+          className="flex gap-12 justify-center w-full mt-0">
           {
-            reviews.map((el,index) => {
+            reviews.slice(0, 3).map((el,index) => {
                 return (
                   <motion.div
-                    whileTap={{ scale: 0.95 }}
-                    key={index} className='flex flex-col gap-2 w-[350px]'>
+                    key={index}
+                    className='flex flex-col gap-4 w-[350px] bg-transparent p-0 m-0'>
                     <Reavel>
-                      <div className='flex gap-2'>
+                      <div className='flex gap-2 mb-2'>
                         <FaStar/><FaStar/><FaStar/><FaStar/><FaStar/>
                       </div>
                     </Reavel>
                     <Reavel>
-                      <div className='flex gap-1 items-center'>
-                        <h1 className='font-bold text-lg'>{el.name}</h1>
-                        <MdVerified size={20} color='green'/>
+                      <div className='flex gap-1 items-center mb-2'>
+                        <h1 className='font-bold text-2xl'>{el.name}</h1>
+                        <MdVerified size={24} color='green'/>
                       </div>
                     </Reavel>
                     <Reavel>
-                      <p className='w-full h-full'>{el.review}</p>
+                      <p className='w-full h-full text-lg leading-relaxed'>{el.review}</p>
                     </Reavel>
                   </motion.div>
                 )

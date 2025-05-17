@@ -1,7 +1,8 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 import Reavel from '../Reavel'
 import { motion } from 'framer-motion'
@@ -10,7 +11,7 @@ import BrandsBar from '../components/BrandsBar'
 import HomeSliders from '../components/HomeSliders'
 import HappyCustomers from '../components/HappyCustomers'
 import Footer from '../components/Footer'
-import Img from '../components/Img'
+import { Grid } from '../components/LayoutGrid'
 
 export default function Home({ to = '' }) {
   const NewArrival = useRef()
@@ -40,29 +41,28 @@ export default function Home({ to = '' }) {
 
   return (
     <>
-      <div className="pt-1 nav:flex flex-wrap justify-between items-end mainPadding">
-        <div className="nav:w-1/2 flex flex-col flex-grow">
-          <h1 className="bolded text-3xl sm:text-6xl mb-10 max-w-[550px]">
+      <div className="py-8 nav:flex flex-wrap mainPadding flex items-center justify-between gap-8 bg-[#F2F0F1] px-6 md:px-12 lg:px-20">
+        <div className="nav:w-1/2 flex flex-col">
+          <h1 className="bolded text-3xl sm:text-6xl mb-6 max-w-[550px] font-black tracking-tight">
             <Reavel>FIND CLOTHES</Reavel> <Reavel>THAT MATCHES</Reavel>{' '}
             <Reavel>YOUR STYLE</Reavel>
           </h1>
 
           <Reavel>
-            <p className="max-w-[550px]">
+            <p className="max-w-[550px] text-gray-700 pb-8">
               Browse through our diverse range of meticulously crafted garments,
               designed to bring out your individuality and cater to your sense
               of style.
             </p>
           </Reavel>
 
-          <div className="mt-10"></div>
           <Reavel className="btnReavel flex" btn="w-full lg:w-fit">
-            <Link href="/Shop" className="btn w-full lg:w-fit text-center">
+            <Link href="/Shop" className="btn bg-black text-white py-3 px-8 rounded-full w-full lg:w-fit text-center font-medium">
               Shop Now
             </Link>
           </Reavel>
 
-          <div className="mb-10"></div>
+          <div className="my-12"></div>
           <div className="flex mb-10 flex-wrap justify-start items-center gap-10">
             {[
               { number: '200+', label: 'International Brands' },
@@ -71,7 +71,7 @@ export default function Home({ to = '' }) {
             ].map((item, i) => (
               <div
                 key={i}
-                className="flex-grow flex flex-col justify-center items-center"
+                className="flex-grow flex flex-col justify-center items-start"
               >
                 <Reavel>
                   <h1 className="font-bold text-3xl tracking-wide">
@@ -79,41 +79,59 @@ export default function Home({ to = '' }) {
                   </h1>
                 </Reavel>
                 <Reavel>
-                  <p>{item.label}</p>
+                  <p className="text-gray-700">{item.label}</p>
                 </Reavel>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="flex justify-end flex-grow relative">
-          <Img
+        <div className="nav:w-1/2 flex flex-col items-center justify-center relative min-w-[320px] min-h-[500px]">
+          {/* Black star top right */}
+          <motion.div
             initial={{ opacity: 0, y: 75 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: 'just' }}
-            className="w-32 absolute right-0 hidden xsm:block z-10"
-            src="https://res.cloudinary.com/dmb2xjib2/image/upload/v1747464527/Vector_dgunku.svg"
-            alt=""
-            img="BlackStar"
-          />
-          <Img
+            className="w-32 absolute right-0 top-0 hidden xsm:block z-10"
+          >
+            <img
+              width={128}
+              height={128}
+              src="https://res.cloudinary.com/dmb2xjib2/image/upload/v1747464515/Main_ko9su3.svg"
+              alt="Decorative star"
+            />
+          </motion.div>
+          
+          {/* Main image */}
+          <motion.div
             initial={{ opacity: 0, y: 75 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: 'just' }}
             className="w-full h-full"
-            src="https://res.cloudinary.com/dmb2xjib2/image/upload/v1747464515/Main_ko9su3.svg"
-            alt="main"
-            img="ManAndWomen"
-          />
-          <Img
+          >
+            <img
+              width={500}
+              height={600}
+              className="w-full h-full max-w-[500px] object-contain"
+              src="/couple.png" 
+              alt="Stylish couple wearing fashionable clothing"
+            />
+          </motion.div>
+          
+          {/* Black star bottom left */}
+          <motion.div
             initial={{ opacity: 0, y: 75 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: 'just' }}
-            className="w-12 absolute left-0 top-44 hidden xsm:block z-10"
-            src="https://res.cloudinary.com/dmb2xjib2/image/upload/v1747464527/Vector_dgunku.svg"
-            alt=""
-            img="BlackStar"
-          />
+            className="w-12 absolute left-0 bottom-10 hidden xsm:block z-10"
+          >
+            <img
+              width={48}
+              height={48}
+              src="https://res.cloudinary.com/dmb2xjib2/image/upload/v1747464527/Vector_dgunku.svg"
+              alt="Decorative star"
+            />
+          </motion.div>
         </div>
       </div>
 
@@ -125,10 +143,8 @@ export default function Home({ to = '' }) {
       <div ref={TopSelling}>
         <HomeSliders text="TOP SELLING" type="topselling" />
       </div>
-      <div ref={OnSale}>
-        <HomeSliders text="ON SALE" type="onsale" />
-      </div>
 
+      <Grid />
       <HappyCustomers />
       <Footer />
     </>
