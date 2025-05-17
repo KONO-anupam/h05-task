@@ -4,11 +4,13 @@ import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 
 import Reavel from '../Reavel'
+import { motion } from 'framer-motion'
+
 import BrandsBar from '../components/BrandsBar'
 import HomeSliders from '../components/HomeSliders'
 import HappyCustomers from '../components/HappyCustomers'
+import Footer from '../components/Footer'
 import Img from '../components/Img'
-import Footer from '@/components/Footer'
 
 export default function Home({ to = '' }) {
   const NewArrival = useRef()
@@ -17,25 +19,20 @@ export default function Home({ to = '' }) {
 
   useEffect(() => {
     if (to === '') {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      })
+      window.scrollTo({ top: 0, behavior: 'smooth' })
       return
     }
-    if (to === 'NewArrival') {
+
+    const sectionMap = {
+      NewArrival,
+      TopSelling,
+      OnSale,
+    }
+
+    const sectionRef = sectionMap[to]
+    if (sectionRef?.current) {
       window.scrollTo({
-        top: NewArrival.current.offsetTop,
-        behavior: 'smooth',
-      })
-    } else if (to === 'TopSelling') {
-      window.scrollTo({
-        top: TopSelling.current.offsetTop,
-        behavior: 'smooth',
-      })
-    } else if (to === 'OnSale') {
-      window.scrollTo({
-        top: OnSale.current.offsetTop,
+        top: sectionRef.current.offsetTop,
         behavior: 'smooth',
       })
     }
@@ -53,46 +50,39 @@ export default function Home({ to = '' }) {
           <Reavel>
             <p className="max-w-[550px]">
               Browse through our diverse range of meticulously crafted garments,
-              designed to bring out your individuality and cater to your sense of
-              style.
+              designed to bring out your individuality and cater to your sense
+              of style.
             </p>
           </Reavel>
 
           <div className="mt-10"></div>
-
           <Reavel className="btnReavel flex" btn="w-full lg:w-fit">
-            <Link className="btn w-full lg:w-fit text-center" href="/Shop">
+            <Link href="/Shop" className="btn w-full lg:w-fit text-center">
               Shop Now
             </Link>
           </Reavel>
 
           <div className="mb-10"></div>
-
           <div className="flex mb-10 flex-wrap justify-start items-center gap-10">
-            <div className="flex-grow flex flex-col justify-center items-center">
-              <Reavel>
-                <h1 className="font-bold text-3xl tracking-wide">200+</h1>
-              </Reavel>
-              <Reavel>
-                <p>International Brands</p>
-              </Reavel>
-            </div>
-            <div className="flex-grow flex flex-col justify-center items-center">
-              <Reavel>
-                <h1 className="font-bold text-3xl tracking-wide">2,000+</h1>
-              </Reavel>
-              <Reavel>
-                <p>High-Quality Products</p>
-              </Reavel>
-            </div>
-            <div className="flex-grow flex flex-col justify-center items-center">
-              <Reavel>
-                <h1 className="font-bold text-3xl tracking-wide">30,000+</h1>
-              </Reavel>
-              <Reavel>
-                <p>Happy Customers</p>
-              </Reavel>
-            </div>
+            {[
+              { number: '200+', label: 'International Brands' },
+              { number: '2,000+', label: 'High-Quality Products' },
+              { number: '30,000+', label: 'Happy Customers' },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="flex-grow flex flex-col justify-center items-center"
+              >
+                <Reavel>
+                  <h1 className="font-bold text-3xl tracking-wide">
+                    {item.number}
+                  </h1>
+                </Reavel>
+                <Reavel>
+                  <p>{item.label}</p>
+                </Reavel>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -103,7 +93,7 @@ export default function Home({ to = '' }) {
             transition={{ type: 'just' }}
             className="w-32 absolute right-0 hidden xsm:block z-10"
             src="https://res.cloudinary.com/dmb2xjib2/image/upload/v1747464527/Vector_dgunku.svg"
-            alt="black star right"
+            alt=""
             img="BlackStar"
           />
           <Img
@@ -112,7 +102,7 @@ export default function Home({ to = '' }) {
             transition={{ type: 'just' }}
             className="w-full h-full"
             src="https://res.cloudinary.com/dmb2xjib2/image/upload/v1747464515/Main_ko9su3.svg"
-            alt="main hero image"
+            alt="main"
             img="ManAndWomen"
           />
           <Img
@@ -121,7 +111,7 @@ export default function Home({ to = '' }) {
             transition={{ type: 'just' }}
             className="w-12 absolute left-0 top-44 hidden xsm:block z-10"
             src="https://res.cloudinary.com/dmb2xjib2/image/upload/v1747464527/Vector_dgunku.svg"
-            alt="black star left"
+            alt=""
             img="BlackStar"
           />
         </div>
@@ -140,8 +130,7 @@ export default function Home({ to = '' }) {
       </div>
 
       <HappyCustomers />
-      <Footer /> 
+      <Footer />
     </>
   )
 }
-

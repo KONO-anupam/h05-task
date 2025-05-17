@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+'use client';
+import { useEffect, useState } from 'react';
 
 const cloudinaryUrls = {
   Confirm: 'https://res.cloudinary.com/dmb2xjib2/image/upload/v1747466524/Confirm_uiugbt.svg',
@@ -23,11 +24,11 @@ const cloudinaryUrls = {
 };
 
 export default function Img({ img, className, ...props }) {
-  const [myImg, setMyImg] = useState();
+  const [myImg, setMyImg] = useState(null);
 
   useEffect(() => {
     if (!img) return;
-    const key = img.charAt(0).toUpperCase() + img.slice(1); // Capitalize first letter (to match keys)
+    const key = img.charAt(0).toUpperCase() + img.slice(1);
     setMyImg(cloudinaryUrls[key] || null);
   }, [img]);
 
@@ -35,8 +36,13 @@ export default function Img({ img, className, ...props }) {
 
   return (
     <div className={className}>
-      <img draggable="false" className="w-full h-full" src={myImg} alt="" {...props} />
+      <img
+        draggable="false"
+        className="w-full h-full"
+        src={myImg}
+        alt=""
+        {...props}
+      />
     </div>
   );
 }
-
