@@ -1,20 +1,10 @@
 'use client';
 import Image from 'next/image';
-import bgImage from '../assets/HeroSectionBg.png'; 
-import Brands from '../assets/Brands.png'; // Make sure this is a wide black image with brand logos
-
 export default function HeroSection() {
   return (
     <div className="relative w-full">
       <div className="relative w-full h-[600px] flex items-center bg-gray-100 overflow-hidden mb-0">
-        <Image
-          src={bgImage}
-          alt="Hero Background"
-          fill
-          className="object-cover object-right"
-          priority
-        />
-
+        
         <div className="relative z-10 w-full px-8 md:px-20 lg:px-28 text-black max-w-[600px]">
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-4">
             FIND CLOTHES <br /> THAT MATCHES <br /> YOUR STYLE
