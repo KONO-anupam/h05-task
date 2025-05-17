@@ -17,7 +17,9 @@ export default function HappyCustomers() {
 
   return (
     <div className='mainMargin pt-24 pb-0'>
-      <h1 className='bolded text-3xl xsm:text-5xl mb-16 text-center'>OUR HAPPY CUSTOMERS</h1>
+      <Reavel>
+        <h1 className='font-integral font-bold text-3xl xsm:text-5xl mb-16 text-center'></h1>
+      </Reavel>
       <div className="overflow-visible" ref={ref}>
         <motion.div
           drag={false}

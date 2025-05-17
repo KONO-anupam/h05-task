@@ -2,6 +2,7 @@
 import React from 'react';
 import { Cross, CrossIcon, Search, ShoppingCart, User, XIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import Reavel from '../Reavel';// Adjust the import based on your file structure
 
 export default function Navbar() {
   const [products, setProducts] = useState([]);
@@ -46,7 +47,9 @@ export default function Navbar() {
 
       {/* Main navbar */}
       <div className="w-full flex items-center justify-between px-16 py-4 bg-white">
-        <div className="font-bold text-4xl text-black">SHOP.CO</div>
+        <div className="font-integral font-bold text-3xl md:text-4xl text-black">
+          SHOP.CO
+        </div>
 
         <nav className="hidden md:flex items-center space-x-6">
           <div className="relative group">

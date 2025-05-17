@@ -4,110 +4,83 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import Reavel from '../Reavel';
 
 export default function Footer() {
   return (
-    <div className="mainMargin bg-white">
-      {/* Newsletter Subscription */}
-      <div className="flex flex-wrap justify-between items-center p-8 md:p-12 bg-black mt-10 rounded-3xl">
-        <div className="bolded text-3xl xsm:text-4xl text-white mb-6 md:mb-0 max-w-[600px]">
-          STAY UPTO DATE ABOUT OUR LATEST OFFERS
-        </div>
-        <form className="flex flex-col gap-4 flex-grow max-w-md" action="">
-          <div className="rounded-full bg-white p-3 flex w-full items-center">
-            <MdOutlineEmail size={20} className="text-gray-400 ml-2" />
-            <input className="text-black outline-none ml-2 w-full" placeholder="Enter your email address" />
+    <div className="mainMargin">
+      <div className="flex flex-wrap justify-between items-center p-10 bg-black mt-10 rounded-3xl mx-15">
+        <Reavel>
+          <div className="font-integral font-bold text-3xl xsm:text-4xl text-white mb-10 max-w-[600px]">STAY UPTO DATE ABOUT OUR LATEST OFFERS</div>
+        </Reavel>
+        <form className="flex flex-col gap-5 flex-grow" action="">
+          <div className="rounded-3xl bg-white p-2 flex w-full">
+            <MdOutlineEmail size={25}/>
+            <input className=" text-black outline-none ml-2 w-full" placeholder="Enter your email address"/>
           </div>
-          <button type="submit" className="rounded-full bg-white p-3 text-black text-center font-medium">
-            Subscribe to Newsletter
-          </button>
+          <button type="submit" className="rounded-3xl bg-white p-2 text-black text-center">Subscribe to Newsletter</button>
         </form>
       </div>
-
-      {/* Main Footer */}
-      <footer className="py-12">
-        <div className="flex flex-wrap justify-between mt-6 gap-8 md:gap-4">
-          {/* Company Info */}
-          <div className="flex-grow flex flex-col gap-5 max-w-xs">
-            <h1 className="bolded text-3xl font-bold">SHOP.CO</h1>
-            <p className="text-gray-600">
-              We have clothes that suits your style and which you're proud to wear. From women to men.
-            </p>
+      <footer>
+        <div className="flex flex-wrap justify-between mt-10 gap-10 p-15">
+          <div className="flex-grow flex flex-col gap-10">
+            <Reavel>
+              <h1 className="font-integral font-bold text-3xl">SHOP.CO</h1>
+            </Reavel>
+            <p className="max-w-72">We have clothes that suits your style and
+               which you’re proud to wear. From women to men.</p>
             <div className="flex gap-5">
-              <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-                <FaXTwitter size={18} />
-              </div>
-              <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-                <FaFacebook size={18} />
-              </div>
-              <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-                <FaInstagram size={18} />
-              </div>
-              <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-                <FaGithub size={18} />
-              </div>
+              <FaXTwitter size={25}/>
+              <FaFacebook size={25}/>
+              <FaInstagram size={25}/>
+              <FaGithub size={25}/>
             </div>
           </div>
-
-          {/* Company */}
-          <div className="flex-grow flex flex-col gap-4 md:items-start">
-            <h1 className="font-semibold text-base">COMPANY</h1>
-            <ul className="flex flex-col gap-3">
-              <li className="text-gray-600 hover:text-black cursor-pointer">About</li>
-              <li className="text-gray-600 hover:text-black cursor-pointer">Features</li>
-              <li className="text-gray-600 hover:text-black cursor-pointer">Works</li>
-              <li className="text-gray-600 hover:text-black cursor-pointer">Career</li>
+          <div className="flex-grow flex gap-5 flex-col justify-center items-center">
+            <h1 className="font-semibold -ml-20">Company</h1>
+            <ul className="flex flex-col gap-5">
+              <li className="Links">About</li>
+              <li className="Links">Features of SHOP.CO</li>
+              <li className="Links">Works</li>
+              <li className="Links">Career</li>
             </ul>
           </div>
-
-          {/* Help */}
-          <div className="flex-grow flex flex-col gap-4 md:items-start">
-            <h1 className="font-semibold text-base">HELP</h1>
-            <ul className="flex flex-col gap-3">
-              <li className="text-gray-600 hover:text-black cursor-pointer">Customer Support</li>
-              <li className="text-gray-600 hover:text-black cursor-pointer">Delivery Details</li>
-              <li className="text-gray-600 hover:text-black cursor-pointer">Terms & Conditions</li>
-              <li className="text-gray-600 hover:text-black cursor-pointer">Privacy Policy</li>
+          <div className="flex-grow flex gap-5 flex-col justify-center items-center">
+            <h1 className="font-semibold -ml-24">Help</h1>
+            <ul className="flex flex-col gap-5">
+              <li className="Links">Customer Support</li>
+              <li className="Links">Delivery Details</li>
+              <li className="Links">Terms & Conditions</li>
+              <li className="Links">Privacy Policy</li>
             </ul>
           </div>
-
-          {/* FAQ */}
-          <div className="flex-grow flex flex-col gap-4 md:items-start">
-            <h1 className="font-semibold text-base">FAQ</h1>
-            <ul className="flex flex-col gap-3">
-              <li className="text-gray-600 hover:text-black cursor-pointer">Account</li>
-              <li className="text-gray-600 hover:text-black cursor-pointer">Manage Deliveries</li>
-              <li className="text-gray-600 hover:text-black cursor-pointer">Orders</li>
-              <li className="text-gray-600 hover:text-black cursor-pointer">Payments</li>
+          <div className="flex-grow flex gap-5 flex-col justify-center items-center">
+            <h1 className="font-semibold -ml-24">FAQ</h1>
+            <ul className="flex flex-col gap-5">
+              <li className="Links">Account</li>
+              <li className="Links">Manage Deliveries</li>
+              <li className="Links">Orders</li>
+              <li className="Links">Payments</li>
             </ul>
           </div>
-
-          {/* Resources */}
-          <div className="flex-grow flex flex-col gap-4 md:items-start">
-            <h1 className="font-semibold text-base">RESOURCES</h1>
-            <ul className="flex flex-col gap-3">
-              <li className="text-gray-600 hover:text-black cursor-pointer">Free eBooks</li>
-              <li className="text-gray-600 hover:text-black cursor-pointer">Development Tutorial</li>
-              <li className="text-gray-600 hover:text-black cursor-pointer">How to - Blog</li>
-              <li className="text-gray-600 hover:text-black cursor-pointer">Youtube Playlist</li>
+          <div className="flex-grow flex gap-5 flex-col justify-center items-center"> 
+            <h1 className="font-semibold -ml-20">Resources</h1>
+            <ul className="flex flex-col gap-5">
+              <li className="Links">Free eBooks</li>
+              <li className="Links">Development Tutorial</li>
+              <li className="Links">How to - Blog</li>
+              <li className="Links">Youtube Playlist</li>
             </ul>
           </div>
         </div>
-
-        {/* Footer Bottom */}
-        <div className="flex justify-between items-center mt-12 pt-8 border-t border-gray-200 flex-wrap gap-4">
-          <div className="text-gray-600">
-            Shop.co © 2000-2023, All Rights Reserved
+        <div className="flex justify-center mt-10 gap-y-5 border-t-4 items-center flex-wrap">
+          <div className="flex-grow text-center md:text-left">
+            Shop.co © 2000-2024, All Rights Reserved
           </div>
-          <div className="flex gap-3 items-center">
-            <img src="/visa.png" alt="Visa" className="h-6" />
-            <img src="/mastercard.png" alt="Mastercard" className="h-6" />
-            <img src="/paypal.png" alt="PayPal" className="h-6" />
-            <img src="/applepay.png" alt="Apple Pay" className="h-6" />
-            <img src="/googlepay.png" alt="Google Pay" className="h-6" />
+          <div className="w-fit">
           </div>
         </div>
       </footer>
     </div>
-  );
+  )
 }

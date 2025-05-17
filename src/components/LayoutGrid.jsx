@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { motion } from "motion/react";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-
+import Reavel from "../Reavel";
 // Utility function
 function cn(...inputs) {
   return twMerge(clsx(inputs));
@@ -222,7 +222,11 @@ export const LayoutGrid = ({ cards = cards }) => {
 export function Grid() {
   return (
     <div className="h-screen bg-gray-100 py-10 mx-auto mb-20 rounded-4xl w-full">
-      <h1 className="text-black text-center font-integral text-5xl font-bold leading-none">Browse By Dress Style</h1>
+      <Reavel>
+         <h1 className="text-black text-centre font-bold text-[40px] leading-none my-12 ">
+BROWSE BY DRESS STYLE
+      </h1>
+      </Reavel>
       <LayoutGrid cards={cards} />
     </div>
   );

@@ -1,152 +1,86 @@
-'use client'
+import Image from "next/image";
 
-import React, { useEffect, useRef } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-
-import Reavel from '../Reavel'
-import { motion } from 'framer-motion'
-
-import BrandsBar from '../components/BrandsBar'
-import HomeSliders from '../components/HomeSliders'
-import HappyCustomers from '../components/HappyCustomers'
-import Footer from '../components/Footer'
-import { Grid } from '../components/LayoutGrid'
-
-export default function Home({ to = '' }) {
-  const NewArrival = useRef()
-  const TopSelling = useRef()
-  const OnSale = useRef()
-
-  useEffect(() => {
-    if (to === '') {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      return
-    }
-
-    const sectionMap = {
-      NewArrival,
-      TopSelling,
-      OnSale,
-    }
-
-    const sectionRef = sectionMap[to]
-    if (sectionRef?.current) {
-      window.scrollTo({
-        top: sectionRef.current.offsetTop,
-        behavior: 'smooth',
-      })
-    }
-  }, [to])
-
+import { NewArrivals } from "../components/NewArrivals";
+import { TopSelling } from "../components/TopSelling";
+import { Grid } from "../components/LayoutGrid";
+import CustomerReviews from "../components/HappyCustomers"
+import BrandsBar from "@/components/BrandsBar";
+import Footer from "@/components/Footer";
+ 
+ 
+ 
+function Home() {
   return (
-    <>
-      <div className="py-8 nav:flex flex-wrap mainPadding flex items-center justify-between gap-8 bg-[#F2F0F1] px-6 md:px-12 lg:px-20">
-        <div className="nav:w-1/2 flex flex-col">
-          <h1 className="bolded text-3xl sm:text-6xl mb-6 max-w-[550px] font-black tracking-tight">
-            <Reavel>FIND CLOTHES</Reavel> <Reavel>THAT MATCHES</Reavel>{' '}
-            <Reavel>YOUR STYLE</Reavel>
+    <div className="h-max w-screen">
+ 
+     
+        <Image
+          src="https://res.cloudinary.com/dmb2xjib2/image/upload/v1747498855/Screenshot_2025-05-17_215027_t3rqcc.png"
+          className="object-cover w-full"
+          width={1440}
+          height={600}
+          alt="hero image"
+        />
+    
+        <div className="absolute sm:top-48 sm:w-3/5 md:top-44 xl:top-52 lg:top-48  left-0  md:w-3/5 lg:w-2xl flex flex-col justify-center gap-3  md:gap-5 px-6 md:px-10 lg:px-12 xl:px-16">
+          <h1 className="   text-2xl md:text-3xl  lg:text-6xl xl:text-6xl font-integral font-bold text-black ">
+            FIND CLOTHES THAT MATCHES YOUR STYLE
           </h1>
-
-          <Reavel>
-            <p className="max-w-[550px] text-gray-700 pb-8">
-              Browse through our diverse range of meticulously crafted garments,
-              designed to bring out your individuality and cater to your sense
-              of style.
-            </p>
-          </Reavel>
-
-          <Reavel className="btnReavel flex" btn="w-full lg:w-fit">
-            <Link href="/Shop" className="btn bg-black text-white py-3 px-8 rounded-full w-full lg:w-fit text-center font-medium">
-              Shop Now
-            </Link>
-          </Reavel>
-
-          <div className="my-12"></div>
-          <div className="flex mb-10 flex-wrap justify-start items-center gap-10">
-            {[
-              { number: '200+', label: 'International Brands' },
-              { number: '2,000+', label: 'High-Quality Products' },
-              { number: '30,000+', label: 'Happy Customers' },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="flex-grow flex flex-col justify-center items-start"
-              >
-                <Reavel>
-                  <h1 className="font-bold text-3xl tracking-wide">
-                    {item.number}
-                  </h1>
-                </Reavel>
-                <Reavel>
-                  <p className="text-gray-700">{item.label}</p>
-                </Reavel>
-              </div>
-            ))}
+          <p className="text-xs md:text-base  font-satoshi text-black/60  ">
+            Browse through our diverse range of meticulously crafted garments, designed <br className=" hidden lg:block" /> to bring out your individuality and cater to your sense of style.
+          </p>
+          <button className="bg-black text-white font-satoshi py-2 px-12 rounded-full w-max hover:bg-black/80 transition-all duration-300">
+            Shop Now
+          </button>
+          <div className=" flex gap-2 lg:gap-4  xl:gap-8 lg:mt-10 items-start ">
+            <div>
+              <h1 className="text-black font-satoshi text-base md:text-xl lg:text-3xl xl:text-[40px] font-bold">200+</h1>
+              <p  className="text-black/60 font-satoshi text-sm md:text-base font-normal leading-[22px]" >International Brands</p>
+            </div>
+            <div className=" border-x  px-2 lg:px-4 xl:px-8 ">
+              <h1 className="text-black font-satoshi text-base md:text-xl lg:text-3xl xl:text-[40px] font-bold">2000+</h1>
+              <p  className="text-black/60 font-satoshi text-sm md:text-base font-normal leading-[22px]">High-Quality Products</p>
+            </div>
+            <div>
+              <h1 className="text-black font-satoshi text-base md:text-xl lg:text-3xl xl:text-[40px] font-bold">30000+</h1>
+              <p  className="text-black/60 font-satoshi text-sm md:text-base font-normal leading-[22px]">Happy Customers</p>
+            </div>
           </div>
         </div>
+     
+ 
+     <BrandsBar/>
+      <h1 className="text-black text-center font-integral font-bold text-[40px] leading-none my-12 ">
+        NEW ARRIVALS
+      </h1>
+      <NewArrivals />
+      <h1 className=" font-satoshi border  border-black/10  w-40  hover:bg-black hover:text-white cursor-pointer transition-all duration-300 text-center px-4 py-2 rounded-4xl mx-auto ">
+        View all
+      </h1>
+       <div className=' w-7xl mx-auto bg-black/10 h-0.5 my-12'></div>
 
-        <div className="nav:w-1/2 flex flex-col items-center justify-center relative min-w-[320px] min-h-[500px]">
-          {/* Black star top right */}
-          <motion.div
-            initial={{ opacity: 0, y: 75 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: 'just' }}
-            className="w-32 absolute right-0 top-0 hidden xsm:block z-10"
-          >
-            <img
-              width={128}
-              height={128}
-              src="https://res.cloudinary.com/dmb2xjib2/image/upload/v1747464515/Main_ko9su3.svg"
-              alt="Decorative star"
-            />
-          </motion.div>
-          
-          {/* Main image */}
-          <motion.div
-            initial={{ opacity: 0, y: 75 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: 'just' }}
-            className="w-full h-full"
-          >
-            <img
-              width={500}
-              height={600}
-              className="w-full h-full max-w-[500px] object-contain"
-              src="/couple.png" 
-              alt="Stylish couple wearing fashionable clothing"
-            />
-          </motion.div>
-          
-          {/* Black star bottom left */}
-          <motion.div
-            initial={{ opacity: 0, y: 75 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: 'just' }}
-            className="w-12 absolute left-0 bottom-10 hidden xsm:block z-10"
-          >
-            <img
-              width={48}
-              height={48}
-              src="https://res.cloudinary.com/dmb2xjib2/image/upload/v1747464527/Vector_dgunku.svg"
-              alt="Decorative star"
-            />
-          </motion.div>
-        </div>
+ <h1 className="text-black text-center font-integral font-bold text-[40px] leading-none my-12 ">
+TOP SELLING
+      </h1>
+
+      
+      <TopSelling/>
+      <h1 className=" font-satoshi border mb-12 border-black/10  w-40 hover:bg-black hover:text-white cursor-pointer transition-all duration-300 text-center px-4 py-2 rounded-4xl mx-auto ">
+        View all
+      </h1>
+    
+
+      <Grid/>
+      <h1 className="text-black font-integral text-center mt-5 text-[45px] bold leading-none ml-15">OUR HAPPY CUSTOMERS</h1>
+    
+      <div className=" ml-20 ">
+        <CustomerReviews />
       </div>
-
-      <BrandsBar />
-
-      <div ref={NewArrival}>
-        <HomeSliders text="NEW ARRIVALS" type="newarrival" />
-      </div>
-      <div ref={TopSelling}>
-        <HomeSliders text="TOP SELLING" type="topselling" />
-      </div>
-
-      <Grid />
-      <HappyCustomers />
-      <Footer />
-    </>
-  )
+     <Footer/>
+       
+  
+  </div>
+  );
 }
+
+export default Home;

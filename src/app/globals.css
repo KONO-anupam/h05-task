@@ -1,2 +1,14 @@
 @import "tailwindcss";
 
+:root {
+  --font-integral: 'Integral CF', Arial, Helvetica, sans-serif;
+  --font-satoshi: 'Satoshi', Arial, Helvetica, sans-serif;
+}
+
+body, p, .font-satoshi {
+  font-family: var(--font-satoshi);
+}
+h1, h2, h3, h4, h5, h6, .font-integral {
+  font-family: var(--font-integral);
+}
+
